@@ -16,6 +16,7 @@ def log(string):
 def getSize_FromPE(PE_data):
 # Performs basic lookup to find the end of an EXE, based upon the
 # size of PE sections. Same algorithm is used to find EXE overlay
+# FYI: This will miss any overlay data, such as RAR SFX archives, etc
     try:
         pe = pefile.PE(data=PE_data)
         return pe.sections[-1].PointerToRawData + pe.sections[-1].SizeOfRawData
