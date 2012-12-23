@@ -33,13 +33,16 @@ except:
 time = datetime.now().strftime("[%d %b %y @ %H:%M:%S]")
 log('Scan started on %s at %s' % (fname, time))
 list = []
-z = bitstring.ConstBitStream(filename = fname)
-results = z.findall(b'0x546869732070726F6772616D')  # "This program"
+fstream = bitstring.ConstBitStream(filename = fname)
+results = fstream.findall(b'0x546869732070726F6772616D')  # "This program"
 log( "Gathering search hits...")
 for i in results:
+    # The result offsets are stored as binary values, so you have to divide by 8
     # -78 is the negative offset to the beginning of "MZ" from "This program"
     hit = int(i)/8-78
     list.append(hit)
+
+
 log( "Parsing EXEs...")
 ifile = open(fname, 'rb')
 for hit in list:
