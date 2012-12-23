@@ -1,4 +1,11 @@
-import sys, bitstring, pefile
+# PE File Carver
+# 18 Dec 12 - Brian Baskin (@bbaskin)
+# Horrible code, I'm sure, but it works.
+# I'm just a shadetree-programmer
+
+import sys
+import bitstring   # Used to parse data. Download from: http://code.google.com/p/python-bitstring/
+import pefile      # Used to parse PE header. Download from: http://code.google.com/p/pefile/
 from datetime import datetime
 
 def log(string):
