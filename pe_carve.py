@@ -3,6 +3,13 @@
 # Horrible code, I'm sure, but it works.
 # I'm just a shadetree-programmer
 
+# This program searches any large logical file for executable files, which are then 
+# carved out and stored onto the hard drive.
+# It searches for the text "This program" which is found in nearly all executables.
+# It then attempts to read the EXE header, find the file size, and extract that number
+# of bytes out to save.
+# It can be easily modified, in my opinion, for your needs.
+
 import sys
 import bitstring   # Used to parse data. Download from: http://code.google.com/p/python-bitstring/
 import pefile      # Used to parse PE header. Download from: http://code.google.com/p/pefile/
