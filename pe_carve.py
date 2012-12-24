@@ -18,7 +18,7 @@ from datetime import datetime
 def log(string):
 # This just tees output to a file and stdout
     print string
-    open('pe_carve.log', 'a').write(string + "\r\n")
+    open('pe_carve.log', 'a').write(string + "\n")
 
 def getSize_FromPE(PE_data):
 # Performs basic lookup to find the end of an EXE, based upon the
