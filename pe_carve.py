@@ -58,7 +58,7 @@ for hit in list:
     pesize = getSize_FromPE(PE_header)
     
     # These sizes are arbitrary. Had numerous junk PE headers (>30GB), so did base limiting
-    if 10000 < pesize < 10000000:
+    if (10000 < pesize < 10000000) and PE_header[0:2] == "MZ":
         log( "Found at: 0x%X (%d bytes)" % (hit, pesize))
         ifile.seek(hit)
         PE_data = ifile.read(pesize)
