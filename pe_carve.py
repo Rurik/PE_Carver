@@ -77,6 +77,13 @@ def getArgs():
 
 def main():
     args = getArgs()
+    if args.output:
+        if not file_exists(args.output):
+            print('[!] Output folder does not exist: {}'.format(args.output))
+            quit()
+        output_folder = args.output
+    else:
+        output_folder = '.'
 
     time = datetime.now().strftime('[%d %b %y @ %H:%M:%S]')
     log('Scan started on %s at %s' % (args.file, time))
@@ -103,7 +110,7 @@ def main():
             log('Found at: 0x%X (%d bytes)' % (hit, pesize))
             ifile.seek(hit)
             PE_data = ifile.read(pesize)
-            outfile = '%s_%X.livebin' % (args.file.split('\\')[-1], hit)
+            outfile = os.path.join(output_folder, '%s_%X.livebin' % (args.file.split('\\')[-1], hit))
             open(outfile, 'wb').write(PE_data)
         else:
             log('Ignored PE header at 0x%X' % hit)
