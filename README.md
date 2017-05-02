@@ -1,6 +1,19 @@
 ## PE_Carver
 
-Carves EXEs from given data files, using intelligent carving based upon PE headers
+Carves EXEs from given data files, using intelligent carving based upon PE headers.
+
+As seen in SANS 508 :)
+
+## Usage
+
+usage: pe_carve.py [-h] -f FILE -o OUTPUT [--log LOG]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  Raw file to carve
+  -o OUTPUT, --output OUTPUT
+                        Output folder for extracted files
+  --log LOG             Log output file
 
 ## Copyright and license
 
